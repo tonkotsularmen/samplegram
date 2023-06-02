@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!--viewportでスマートフォンのスクリーンでの拡大・縮小に関する設定-->
+     <!--initial-scaleでズーム倍率の初期値を設定します。initial-scale=1とすることで1倍の拡大率、つまり拡大や縮小しない画面を見せることができる-->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -26,8 +28,11 @@
           <%= flash[:alert] %>
         </div>
       <% end %>
-
-      <%= yield %>
+      
+      <div class="container">
+      <!--containerクラスは、Bootstrapでサイトのコンテンツを中央に配置して水平方向に埋め込む手段を提供します。-->
+        <%= yield %>
+      </div>
       
       <%= render 'partial/footer' %>
     </div>
