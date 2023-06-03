@@ -17,6 +17,14 @@ class PostsController < ApplicationController
       flash[:alert] = "投稿に失敗しました"
     end
   end
+  
+  def index
+    @posts = Post.limit(10).includes(:photos, :user).order('created_at DESC')
+    #limitメソッドは取り出すレコード数の上限を指定する。
+    #orderメソッドはDBから取り出すレコードを特定の順番で並べたい時に使用する。
+    #order('created_at DESC')とすることで、created_atのDESC(降順)、=> 投稿された最新の日時順に並び替える。
+    #.includes(:photos, :user)でN+1問題が解決する。
+  end
 
   private
     def post_params
