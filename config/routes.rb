@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
 
   resources :posts, only: %i[new create index show destroy] do
-    resources :photos, only: %i[create]
+    resources :photos, only: %i[create]#postsにphotosが紐づいている
+    resources :likes, only: %i[create destroy]#postsにlikesが紐づいている
   end
+
 
 end
