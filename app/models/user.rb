@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+
   has_many :posts, dependent: :destroy
   has_many :likes
   has_many :comments
@@ -9,6 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 
   def update_without_current_password(params, *options)
 
